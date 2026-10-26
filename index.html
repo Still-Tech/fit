@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
-  <meta name="description" content="Inference latency changes which actions a robot executes. A training-free planner matches execution length to latency and helps one GPU serve many robots.">
+  <meta name="description" content="Inference latency changes which actions a robot executes. FIT, a training-free planner, matches execution length to latency and helps one GPU serve many robots.">
   <title>FIT: Fitting Execution Length to Inference Time for Asynchronous Robot Policies</title>
   <!-- Edit headline numbers here. Run tools/sync_data.py to refresh the marked research data. -->
   <script>
@@ -647,7 +647,7 @@
 
     <section class="section soft-section" id="method">
       <div class="container page-width">
-        <p class="eyebrow">A training-free planner</p>
+        <p class="eyebrow">FIT: a training-free planner</p>
         <h2 class="title section-title">Method</h2>
         <p class="section-intro">Measure a little. Choose how long to execute.</p>
         <div class="method-steps">
@@ -656,12 +656,12 @@
           <article class="step-card"><h3>Score every <i>(d, E)</i> and choose</h3><div class="score-formula" role="math">Q(d, E) = S(d + E)<br>− κ · d · (d + E)</div><div class="planner-outputs"><span>execution length <b>E(d)</b></span><span>latency budget <b>d*</b></span></div></article>
         </div>
         <figure class="planner-panel" id="planner-panel">
-          <div class="component-heading"><h3>Try the planner</h3><span>Predicted success for each execution length</span></div>
+          <div class="component-heading"><h3>Try FIT</h3><span>Predicted success for each execution length</span></div>
           <div class="planner-control"><label for="planner-delay">Inference delay <i>d</i></label><output id="planner-delay-value" for="planner-delay"></output><input type="range" id="planner-delay"><div class="range-ticks" id="planner-ticks"></div></div>
           <div class="chart-axis-title">Predicted Q(d, E) (%)</div>
           <div class="score-chart"><div class="score-y-axis" id="score-y-axis"></div><div class="score-bars" id="score-bars" role="img" aria-label="Predicted scores and measured blind-test success"></div></div>
           <p class="chart-axis-bottom">Execution length E (steps)</p>
-          <div class="chart-legend"><span><i class="legend-bar"></i>point score</span><span><i class="legend-bar chosen"></i>planner's choice</span><span><i class="legend-dot measured"></i>measured in the blind test</span></div>
+          <div class="chart-legend"><span><i class="legend-bar"></i>point score</span><span><i class="legend-bar chosen"></i>FIT's choice</span><span><i class="legend-dot measured"></i>measured in the blind test</span></div>
           <p class="planner-selection" id="planner-selection" aria-live="polite"></p>
           <figcaption id="planner-caption"></figcaption>
         </figure>
@@ -681,7 +681,7 @@
         </figure>
         <figure class="family-panel">
           <div class="component-heading"><h3>Across five policy families</h3><span>Success after acceleration</span></div>
-          <div class="chart-legend"><span><i class="legend-dot source"></i>keep source E</span><span><i class="legend-dot chosen"></i>planner's E</span></div>
+          <div class="chart-legend"><span><i class="legend-dot source"></i>keep source E</span><span><i class="legend-dot chosen"></i>FIT's E</span></div>
           <div id="family-rows"></div><p class="family-summary" id="family-summary"></p><figcaption id="families-caption"></figcaption>
         </figure>
       </div>

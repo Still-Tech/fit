@@ -11,20 +11,20 @@ document.querySelectorAll('[data-asset-href]').forEach(el => el.href = p.assets[
 document.querySelectorAll('[data-asset-src]').forEach(el => el.src = p.assets[el.dataset.assetSrc]);
 document.querySelectorAll('[data-asset-poster]').forEach(el => el.poster = p.assets[el.dataset.assetPoster]);
 text('paper-title', p.title); text('authors', p.authors);
-text('teaser-caption', `One ${p.gpuGB} GB GPU drives ${p.robots} simulated robots in real time. Each robot runs at ${p.hz} Hz and never waits for a plan, because the planner's execution length E sets how often each robot calls the GPU.`);
+text('teaser-caption', `One ${p.gpuGB} GB GPU drives ${p.robots} simulated robots in real time. Each robot runs at ${p.hz} Hz and never waits for a plan, because FIT's execution length E sets how often each robot calls the GPU.`);
 const takeaways = [
   `Faster inference changes which actions a robot actually executes: with the same execution length, an ${p.speedup}× faster X-WAM drops from ${f(p.anomaly[0].value)}% to ${f(p.anomaly[1].value)}% on button tasks.`,
-  'A training-free planner picks the execution length E and a latency budget from a synchronous success curve plus one asynchronous run.',
+  'FIT, a training-free planner, picks the execution length E and a latency budget from a synchronous success curve plus one asynchronous run.',
   'Matching E lets one GPU serve many robots and tells you how slow a device can be.'
 ];
 takeaways.forEach(value => {const li = document.createElement('li'); li.textContent = value; $('takeaways').append(li);});
 p.anomaly.forEach(({name, value}) => {const item = document.createElement('div'); item.className = 'stat'; item.innerHTML = `<strong>${f(value)}%</strong><span>${name}</span>`; $('anomaly-stats').append(item);});
 text('window-intro', `A policy predicts a ${p.horizon}-step plan at time t. It arrives d steps later. The robot executes the window [d, d + E). Move the sliders to see what changes.`);
 text('blind-caption', `X-WAM blind test: ${p.blindTasks} tasks × ${p.blindInitialStates} initial states per cell. Cell values are success percentages; blank cells were not tested. Both tied best choices are marked.`);
-text('families-caption', `Choices fixed before target asynchronous runs. Episode counts per cell are shown with each family. ACT includes ${p.actCheckpoints} checkpoints; π₀.₅ uses LIBERO-${p.liberoTasks}; SmolVLA uses LIBERO-goal (source: LIBERO-${p.liberoTasks}, d = ${p.smolSourceDelay}). Labels give execution length E and success; calls scale as source E / planner's E.`);
+text('families-caption', `Choices fixed before target asynchronous runs. Episode counts per cell are shown with each family. ACT includes ${p.actCheckpoints} checkpoints; π₀.₅ uses LIBERO-${p.liberoTasks}; SmolVLA uses LIBERO-goal (source: LIBERO-${p.liberoTasks}, d = ${p.smolSourceDelay}). Labels give execution length E and success; calls scale as source E / FIT's E.`);
 const episodeCounts = research.deployment.flatMap(line => line.points.map(row => row.n));
 text('deployment-caption', `Icons show the largest tested run for each service latency. Faded icons are past the success-kept boundary. One batch-one FIFO inference process serves all robots; service latency is injected. Deployment cells contain ${Math.min(...episodeCounts)}–${Math.max(...episodeCounts)} episodes; whiskers show ${p.confidenceLevel}% task-cluster intervals.`);
-text('success-definition', `“Success kept” means success is not significantly more than δ = ${budget.delta_pp} points below one robot on the same device (the planner's tolerance): no waiting, and the paired interval's upper end is at least −${budget.delta_pp} points. It is not proof of equal success. A memory-limited run has no measured success comparison.`);
+text('success-definition', `“Success kept” means success is not significantly more than δ = ${budget.delta_pp} points below one robot on the same device (FIT's tolerance): no waiting, and the paired interval's upper end is at least −${budget.delta_pp} points. It is not proof of equal success. A memory-limited run has no measured success comparison.`);
 text('throughput', `${f(p.throughput)}× successful tasks per GPU-hour at ${p.robots} robots`);
 text('te-delta', `${f(p.teDelta)} ${ci(p.teCI)} points`);
 text('te-saving', `${p.gpuSavingPercent}%`);
@@ -103,8 +103,8 @@ function drawPlanner() {
   }
   $('score-bars').style.gridTemplateColumns=`repeat(${$('score-bars').children.length},minmax(0,1fr))`;
   $('score-bars').setAttribute('aria-label',rows.join('; '));
-  text('planner-selection',chosen?`planner's choice: E = ${chosen[1]}`:'No preselected E in the blind test at this delay.');
-  text('planner-caption',`Point score only; the planner also uses a ${p.confidenceLevel}% bound and a tolerance δ = ${budget.delta_pp} points.`);
+  text('planner-selection',chosen?`FIT's choice: E = ${chosen[1]}`:'No preselected E in the blind test at this delay.');
+  text('planner-caption',`Point score only; FIT also uses a ${p.confidenceLevel}% bound and a tolerance δ = ${budget.delta_pp} points.`);
 }
 function drawHeatmap() {
   const grid=$('blind-heatmap'), vals=Object.values(research.heatmap).flatMap(Object.values), lo=Math.min(...vals), hi=Math.max(...vals);
