@@ -6,7 +6,7 @@
   <meta name="color-scheme" content="light">
   <meta name="description" content="Inference latency changes which actions a robot executes. A training-free planner matches execution length to latency and helps one GPU serve many robots.">
   <title>On Matching Execution Length to Inference Latency in Asynchronous Robot Policy Deployment</title>
-  <!-- Edit paper numbers here. Figures and videos are snapshots of the supplied assets. -->
+  <!-- Edit headline numbers here. Run tools/sync_data.py to refresh the marked research data. -->
   <script>
     const PROJECT = {
       title: 'On Matching Execution Length to Inference Latency in Asynchronous Robot Policy Deployment',
@@ -23,22 +23,545 @@
         {name: 'Fast + matched E', value: 90.0}
       ],
       regret: 1.7, regretCI: [0.0, 4.0], budgetMs: 200,
-      throughput: 15.3, teDelta: 0.0, teCI: [-3.1, 2.9], gpuSavingPercent: 49,
+      throughput: 16.3, teDelta: 0.0, teCI: [-3.1, 2.9], gpuSavingPercent: 49,
       deploymentEpisodes: 96, deploymentTasks: 24, deploymentInitialStates: 4,
       blindTasks: 24, blindInitialStates: 10,
       familyEpisodes: {ACT: 100, GR00T: 100, pi05: 100, XWAM: 120, SmolVLA: 300},
       actCheckpoints: 3, liberoTasks: 10, smolSourceDelay: 5, callsPerSteps: 100,
-      deployment: [
-        {serviceMs: 26, execution: 24, neverWait: 16, successKept: 16, delta: -3.125, ci: [-7.2916666667, 1.0416666667]},
-        {serviceMs: 150, execution: 16, neverWait: 4, successKept: 4, delta: 7.2916666667, ci: [-3.125, 17.7083333333]},
-        {serviceMs: 300, execution: 16, neverWait: 2, successKept: 1, delta: -10.4166666667, ci: [-16.6666666667, -5.2083333333]},
-        {serviceMs: 26, requestedRobots: 24, execution: 24, memoryExceeded: true}
-      ],
+      chartStep: 4, confidenceLevel: 95, scoreRange: [0, 100], familySuccessRange: [40, 100], successTickStep: 20,
+      robotColumns: 8, memoryExceededRobots: 24,
+      familySummary: {delta: 7.7, ci: [3.6, 11.7], families: ['ACT', 'GR00T', 'X-WAM']},
+      // BEGIN SYNCED RESEARCH DATA
+      research: {
+        "heatmap": {
+          "4": {
+            "4": 61,
+            "8": 62,
+            "12": 69,
+            "16": 71,
+            "20": 79,
+            "24": 77,
+            "28": 80
+          },
+          "8": {
+            "8": 70,
+            "12": 73,
+            "16": 74,
+            "20": 74,
+            "24": 71
+          },
+          "12": {
+            "12": 71,
+            "16": 69,
+            "20": 65
+          },
+          "16": {
+            "16": 65
+          }
+        },
+        "chosen": [
+          [
+            4,
+            24
+          ],
+          [
+            8,
+            20
+          ],
+          [
+            12,
+            16
+          ]
+        ],
+        "best": [
+          [
+            4,
+            28
+          ],
+          [
+            8,
+            16
+          ],
+          [
+            8,
+            20
+          ],
+          [
+            12,
+            12
+          ]
+        ],
+        "budget": {
+          "latency_steps": [
+            4,
+            8,
+            12,
+            16
+          ],
+          "latency_ms": [
+            200,
+            400,
+            600,
+            800
+          ],
+          "sync": {
+            "4": 49.166666666666664,
+            "8": 56.666666666666664,
+            "12": 64.58333333333333,
+            "16": 65.41666666666667,
+            "20": 70.83333333333333,
+            "24": 78.75,
+            "28": 81.25,
+            "32": 77.08333333333333
+          },
+          "kappa": {
+            "bayes": 0.04458059854377332,
+            "K2": 0.010162601626016256,
+            "zero": 0.0
+          },
+          "max_score_E": {
+            "bayes": {
+              "4": 24,
+              "8": 20,
+              "12": 16,
+              "16": 16
+            },
+            "K2": {
+              "4": 24,
+              "8": 20,
+              "12": 16,
+              "16": 16
+            },
+            "zero": {
+              "4": 24,
+              "8": 20,
+              "12": 16,
+              "16": 16
+            }
+          },
+          "max_score": {
+            "bayes": {
+              "4": 76.25697296309738,
+              "8": 71.26394592619478,
+              "12": 66.27091888929216,
+              "16": 54.25806687892139
+            },
+            "K2": {
+              "4": 80.11178861788618,
+              "8": 78.97357723577235,
+              "12": 77.83536585365854,
+              "16": 71.880081300813
+            },
+            "zero": {
+              "4": 81.25,
+              "8": 81.25,
+              "12": 81.25,
+              "16": 77.08333333333333
+            }
+          },
+          "predicted_loss": {
+            "bayes": [
+              0.0,
+              -4.993027036902603,
+              -9.98605407380522,
+              -21.998906084175992
+            ],
+            "K2": [
+              0.0,
+              -1.1382113821138233,
+              -2.2764227642276325,
+              -8.231707317073173
+            ],
+            "zero": [
+              0.0,
+              0.0,
+              0.0,
+              -4.166666666666671
+            ]
+          },
+          "measured_loss": [
+            0,
+            -6,
+            -9,
+            -15
+          ],
+          "delta_pp": 3,
+          "predicted_budget_steps": {
+            "bayes": 4,
+            "K2": 12,
+            "zero": 12
+          },
+          "measured_budget_steps": 4,
+          "source": "Frozen eval_i427.plan and xwam_logo.s_at/kappas; i427 synchronous summaries"
+        },
+        "budget_boundaries": {
+          "ours_steps": 4,
+          "measured_steps": 4,
+          "two_cell_steps": 12,
+          "no_staleness_steps": 12,
+          "ours_ms": 200,
+          "baseline_ms": 600,
+          "reference_d4_best": 80,
+          "d12_best": 71,
+          "measured_drop_pp": 9,
+          "delta_pp": 3
+        },
+        "acceleration": [
+          {
+            "family": "GR00T",
+            "d": 1,
+            "source_E": 4,
+            "ours_E": 8,
+            "source_success": 70,
+            "ours_success": 79,
+            "episodes": 100
+          },
+          {
+            "family": "ACT",
+            "checkpoint": 1,
+            "d": 2,
+            "source_E": 4,
+            "ours_E": 8,
+            "source_success": 46,
+            "ours_success": 54,
+            "episodes": 100
+          },
+          {
+            "family": "ACT",
+            "checkpoint": 2,
+            "d": 2,
+            "source_E": 4,
+            "ours_E": 8,
+            "source_success": 48,
+            "ours_success": 63,
+            "episodes": 100
+          },
+          {
+            "family": "ACT",
+            "checkpoint": 3,
+            "d": 2,
+            "source_E": 4,
+            "ours_E": 8,
+            "source_success": 60,
+            "ours_success": 70,
+            "episodes": 100
+          },
+          {
+            "family": "X-WAM",
+            "d": 2,
+            "source_E": 24,
+            "ours_E": 30,
+            "source_success": 81.7,
+            "ours_success": 80.0,
+            "episodes": 120
+          },
+          {
+            "family": "π0.5",
+            "d": 1,
+            "source_E": 3,
+            "ours_E": 7,
+            "source_success": 92,
+            "ours_success": 96,
+            "episodes": 100
+          },
+          {
+            "family": "SmolVLA",
+            "d": 1,
+            "source_E": 5,
+            "ours_E": 2,
+            "source_success": 72,
+            "ours_success": 72,
+            "episodes": 300
+          }
+        ],
+        "deployment": [
+          {
+            "service_ms": 26,
+            "E": 24,
+            "slack_steps": 8,
+            "points": [
+              {
+                "R": 1,
+                "n": 96,
+                "successes": 75,
+                "success": 0.78125,
+                "success_ci": [
+                  0.65625,
+                  0.8958333333333334
+                ],
+                "tasks_per_hour": 170.77798861480076,
+                "tasks_per_hour_ci": [
+                  128.307580703122,
+                  229.67695334197208
+                ],
+                "hold": 0,
+                "skipped": 0,
+                "max_arrival": 4,
+                "cell": "i433d/formal-R1-E24-ms26"
+              },
+              {
+                "R": 4,
+                "n": 96,
+                "successes": 76,
+                "success": 0.7916666666666666,
+                "success_ci": [
+                  0.6770833333333334,
+                  0.8958333333333334
+                ],
+                "tasks_per_hour": 691.8700214945,
+                "tasks_per_hour_ci": [
+                  527.0671275302869,
+                  899.6134206575645
+                ],
+                "hold": 0,
+                "skipped": 0,
+                "max_arrival": 6,
+                "cell": "i433d/formal-R4-E24-ms26",
+                "delta_vs_1": 0.010416666666666666,
+                "delta_ci": [
+                  -0.03125,
+                  0.0625
+                ],
+                "pairs": 96
+              },
+              {
+                "R": 8,
+                "n": 96,
+                "successes": 77,
+                "success": 0.8020833333333334,
+                "success_ci": [
+                  0.6875,
+                  0.8958333333333334
+                ],
+                "tasks_per_hour": 1424.6892165365714,
+                "tasks_per_hour_ci": [
+                  1099.1726049862361,
+                  1826.0464540304927
+                ],
+                "hold": 0,
+                "skipped": 0,
+                "max_arrival": 4,
+                "cell": "i433d/formal-R8-E24-ms26",
+                "delta_vs_1": 0.020833333333333332,
+                "delta_ci": [
+                  -0.03125,
+                  0.08333333333333333
+                ],
+                "pairs": 96
+              },
+              {
+                "R": 16,
+                "n": 192,
+                "successes": 152,
+                "success": 0.7916666666666666,
+                "success_ci": [
+                  0.6875,
+                  0.8854166666666666
+                ],
+                "tasks_per_hour": 2781.989768358171,
+                "tasks_per_hour_ci": [
+                  2153.9511397765077,
+                  3583.2628103701195
+                ],
+                "hold": 0,
+                "skipped": 0,
+                "max_arrival": 5,
+                "cell": "i433d/formal-R16-E24-ms26+i433d/extra-R16-E24-ms26",
+                "delta_vs_1": 0.010416666666666666,
+                "delta_ci": [
+                  -0.041927083333333316,
+                  0.07291666666666667
+                ],
+                "pairs": 96
+              }
+            ],
+            "memory_limit": 24
+          },
+          {
+            "service_ms": 150,
+            "E": 16,
+            "slack_steps": 16,
+            "points": [
+              {
+                "R": 1,
+                "n": 96,
+                "successes": 69,
+                "success": 0.71875,
+                "success_ci": [
+                  0.5833333333333334,
+                  0.84375
+                ],
+                "tasks_per_hour": 150.28132373404318,
+                "tasks_per_hour_ci": [
+                  109.72093088541864,
+                  205.27867285360423
+                ],
+                "hold": 0,
+                "skipped": 0,
+                "max_arrival": 4,
+                "cell": "i434-E16-ms150"
+              },
+              {
+                "R": 2,
+                "n": 96,
+                "successes": 69,
+                "success": 0.71875,
+                "success_ci": [
+                  0.59375,
+                  0.8333333333333334
+                ],
+                "tasks_per_hour": 302.7237828285906,
+                "tasks_per_hour_ci": [
+                  221.0524931251203,
+                  413.8262200339921
+                ],
+                "hold": 0,
+                "skipped": 0,
+                "max_arrival": 9,
+                "cell": "i433e/formal-R2-E16-ms150",
+                "delta_vs_1": 0.0,
+                "delta_ci": [
+                  -0.07291666666666667,
+                  0.08333333333333333
+                ],
+                "pairs": 96
+              },
+              {
+                "R": 4,
+                "n": 96,
+                "successes": 76,
+                "success": 0.7916666666666666,
+                "success_ci": [
+                  0.6875,
+                  0.875
+                ],
+                "tasks_per_hour": 688.1504071430817,
+                "tasks_per_hour_ci": [
+                  528.459878986272,
+                  904.199474139775
+                ],
+                "hold": 0,
+                "skipped": 0,
+                "max_arrival": 13,
+                "cell": "i433e/formal-R4-E16-ms150",
+                "delta_vs_1": 0.07291666666666667,
+                "delta_ci": [
+                  -0.03125,
+                  0.1875
+                ],
+                "pairs": 96
+              },
+              {
+                "R": 8,
+                "n": 96,
+                "successes": 36,
+                "success": 0.375,
+                "success_ci": [
+                  0.23958333333333334,
+                  0.5104166666666666
+                ],
+                "tasks_per_hour": 464.01718582169707,
+                "tasks_per_hour_ci": [
+                  273.7990897098846,
+                  691.0527231897954
+                ],
+                "hold": 16389,
+                "skipped": 990,
+                "max_arrival": 30,
+                "cell": "i433e/formal-R8-E16-ms150",
+                "delta_vs_1": -0.34375,
+                "delta_ci": [
+                  -0.5,
+                  -0.17708333333333334
+                ],
+                "pairs": 96
+              }
+            ],
+            "memory_limit": null
+          },
+          {
+            "service_ms": 300,
+            "E": 16,
+            "slack_steps": 16,
+            "points": [
+              {
+                "R": 1,
+                "n": 96,
+                "successes": 77,
+                "success": 0.8020833333333334,
+                "success_ci": [
+                  0.6979166666666666,
+                  0.8958333333333334
+                ],
+                "tasks_per_hour": 181.98529411764704,
+                "tasks_per_hour_ci": [
+                  140.40552965713198,
+                  235.23698577517362
+                ],
+                "hold": 0,
+                "skipped": 0,
+                "max_arrival": 7,
+                "cell": "i434-E16-ms300"
+              },
+              {
+                "R": 2,
+                "n": 96,
+                "successes": 67,
+                "success": 0.6979166666666666,
+                "success_ci": [
+                  0.5833333333333334,
+                  0.8020833333333334
+                ],
+                "tasks_per_hour": 290.139235557694,
+                "tasks_per_hour_ci": [
+                  218.0339166432957,
+                  383.7566651447285
+                ],
+                "hold": 0,
+                "skipped": 0,
+                "max_arrival": 14,
+                "cell": "i433e/formal-R2-E16-ms300",
+                "delta_vs_1": -0.10416666666666667,
+                "delta_ci": [
+                  -0.16666666666666666,
+                  -0.041666666666666664
+                ],
+                "pairs": 96
+              },
+              {
+                "R": 4,
+                "n": 96,
+                "successes": 35,
+                "success": 0.3645833333333333,
+                "success_ci": [
+                  0.25,
+                  0.4898437499999986
+                ],
+                "tasks_per_hour": 232.7890810835777,
+                "tasks_per_hour_ci": [
+                  143.3407088456919,
+                  352.23709512087447
+                ],
+                "hold": 16911,
+                "skipped": 1050,
+                "max_arrival": 24,
+                "cell": "i433e/formal-R4-E16-ms300",
+                "delta_vs_1": -0.4375,
+                "delta_ci": [
+                  -0.5520833333333334,
+                  -0.3125
+                ],
+                "pairs": 96
+              }
+            ],
+            "memory_limit": null
+          }
+        ]
+      },
+      // END SYNCED RESEARCH DATA
       assets: {
         teaser: 'static/robots16-wallclock.mp4', cover: 'static/robots16-cover.png',
-        anomaly: 'static/xwam-anomaly-en.mp4', anomalyCover: 'static/anomaly-cover.png',
-        method: 'static/method.png', blind: 'static/blind-test.png',
-        families: 'static/five-families.png', deployment: 'static/deployment.png'
+        anomaly: 'static/xwam-anomaly-en.mp4', anomalyCover: 'static/anomaly-cover.png'
       }
     };
   </script>
@@ -127,16 +650,21 @@
         <p class="eyebrow">A training-free planner</p>
         <h2 class="title section-title">Method</h2>
         <p class="section-intro">Measure a little. Choose how long to execute.</p>
-        <figure class="method-figure">
-          <a data-asset-href="method" aria-label="Open the full method figure"><img data-asset-src="method" width="1530" height="1530" loading="lazy" alt="Synchronous success curve and asynchronous calibration feed a staleness cost, yielding execution length and a latency budget."></a>
-          <figcaption>The synchronous success curve and one asynchronous calibration give deployment choices without updating policy weights.</figcaption>
-        </figure>
-        <div class="equation" role="math" aria-label="Q of d and E equals S of d plus E minus kappa times d times d plus E">Q(d, E) = S(d + E) − κ · d · (d + E)</div>
-        <div class="method-copy">
-          <p>Input: the synchronous success curve <i>S</i> and one long-window asynchronous run to calibrate the staleness cost <i>κ</i>.</p>
-          <p>The planner scores execution windows with <i>Q(d, E)</i> and selects an execution length <i>E(d)</i> for each delay.</p>
-          <p>The same calibration gives a latency budget <i>d*</i>: how slow inference can be while keeping the target success rate.</p>
+        <div class="method-steps">
+          <article class="step-card"><h3>Measure the synchronous curve <i>S(n)</i></h3><svg id="sync-curve" viewBox="0 0 270 140" role="img" aria-label="Synchronous success as the execution length increases"></svg><p>cheap: no asynchronous runs</p></article>
+          <article class="step-card"><h3>One asynchronous calibration run</h3><div class="kappa-value" id="kappa-value"></div><p>cost of acting on stale observations</p></article>
+          <article class="step-card"><h3>Score every <i>(d, E)</i> and choose</h3><div class="score-formula" role="math">Q(d, E) = S(d + E)<br>− κ · d · (d + E)</div><div class="planner-outputs"><span>execution length <b>E(d)</b></span><span>latency budget <b>d*</b></span></div></article>
         </div>
+        <figure class="planner-panel" id="planner-panel">
+          <div class="component-heading"><h3>Try the planner</h3><span>Predicted success for each execution length</span></div>
+          <div class="planner-control"><label for="planner-delay">Inference delay <i>d</i></label><output id="planner-delay-value" for="planner-delay"></output><input type="range" id="planner-delay"><div class="range-ticks" id="planner-ticks"></div></div>
+          <div class="chart-axis-title">Predicted Q(d, E) (%)</div>
+          <div class="score-chart"><div class="score-y-axis" id="score-y-axis"></div><div class="score-bars" id="score-bars" role="img" aria-label="Predicted scores and measured blind-test success"></div></div>
+          <p class="chart-axis-bottom">Execution length E (steps)</p>
+          <div class="chart-legend"><span><i class="legend-bar"></i>point score</span><span><i class="legend-bar chosen"></i>planner's choice</span><span><i class="legend-dot measured"></i>measured in the blind test</span></div>
+          <p class="planner-selection" id="planner-selection" aria-live="polite"></p>
+          <figcaption id="planner-caption"></figcaption>
+        </figure>
       </div>
     </section>
 
@@ -144,13 +672,17 @@
       <div class="container page-width">
         <p class="eyebrow">Choices made before the test</p>
         <h2 class="title section-title">Does it pick well?</h2>
-        <figure class="blind-figure">
-          <a data-asset-href="blind" aria-label="Open the full blind-test heatmap"><img data-asset-src="blind" width="1499" height="1270" loading="lazy" alt="Blind-test heatmap of success by latency and execution length. Blue circles mark preselected lengths; squares mark measured best choices."></a>
+        <figure>
+          <div class="validation-grid">
+            <div class="heatmap-panel"><h3>Blind-test success</h3><p class="chart-axis-title">Execution length E (steps)</p><div id="blind-heatmap" class="native-heatmap" role="table" aria-label="Blind-test success by execution length and inference delay"></div><p class="chart-axis-bottom">Inference delay d · steps / milliseconds</p><div class="chart-legend"><span class="legend-chip"><i class="legend-circle"></i>preselected E</span><span class="legend-chip"><i class="legend-square"></i>best measured E</span></div></div>
+            <div class="validation-stats"><article class="result-card"><strong id="regret-value"></strong><span id="regret-interval"></span><p>preselected E vs. best measured E</p></article><article class="result-card"><strong id="budget-value"></strong><span>latency budget</span><p>predicted = measured</p></article></div>
+          </div>
           <figcaption id="blind-caption"></figcaption>
         </figure>
-        <figure class="wide-figure">
-          <a data-asset-href="families" aria-label="Open the full five-family comparison"><img data-asset-src="families" width="3299" height="1140" loading="lazy" alt="Success versus policy calls across GR00T, ACT, X-WAM, pi 0.5, and SmolVLA; arrows compare source execution lengths with preselected lengths."></a>
-          <figcaption id="families-caption"></figcaption>
+        <figure class="family-panel">
+          <div class="component-heading"><h3>Across five policy families</h3><span>Success after acceleration</span></div>
+          <div class="chart-legend"><span><i class="legend-dot source"></i>keep source E</span><span><i class="legend-dot chosen"></i>planner's E</span></div>
+          <div id="family-rows"></div><p class="family-summary" id="family-summary"></p><figcaption id="families-caption"></figcaption>
         </figure>
       </div>
     </section>
@@ -160,16 +692,18 @@
         <p class="eyebrow">From execution length to capacity</p>
         <h2 class="title section-title">Deployment: one GPU, many robots; slower devices, fewer</h2>
         <p class="section-intro">Longer execution means fewer calls per robot. The same GPU can serve more robots.</p>
-        <figure>
-          <a data-asset-href="deployment" aria-label="Open the full deployment figure"><img data-asset-src="deployment" width="1764" height="1530" loading="lazy" alt="Robots served by a GPU at three service latencies, separating zero waiting from success retained. Capacity shrinks with slower inference."></a>
-          <figcaption id="deployment-caption"></figcaption>
+        <figure class="deployment-panel">
+          <svg class="icon-defs" width="0" height="0" aria-hidden="true"><defs><symbol id="robot-arm" viewBox="0 0 40 40"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M6 35H25L23 31H9Z M16 31L12 23L23 14L12 7L7 10L19 17L9 23L13 31 M23 14L29 20L32 17 M29 20L28 24L33 26 M32 17L36 19L34 24"/><circle cx="12" cy="7" r="2.3"/><circle cx="23" cy="14" r="2.3"/><circle cx="12" cy="23" r="2.3"/></g></symbol></defs></svg>
+          <div class="chart-legend deployment-legend"><span id="kept-legend"></span><span><i class="legend-line dashed"></i>no wait</span><span><i class="legend-dot open"></i>one robot</span><span><i class="legend-dot chosen"></i>largest no-wait run</span></div>
+          <div id="device-rows"></div><figcaption id="deployment-caption"></figcaption>
         </figure>
+        <details class="numbers-disclosure"><summary>Show numbers</summary>
         <table class="table is-fullwidth deployment-table">
           <caption>Current measured capacity. Each comparison uses the same service latency and execution length.</caption>
           <thead><tr><th scope="col">Service / run</th><th scope="col">Robots that never wait</th><th scope="col">Robots with success kept</th><th scope="col">Δ vs one robot<br><span class="table-subhead">at the largest no-wait run</span></th></tr></thead>
           <tbody id="deployment-rows"></tbody>
-        </table>
-        <p class="caption-detail">“Success kept” means success is not significantly more than δ = 3 points below one robot on the same device (the planner's tolerance). It is not proof of equal success. Brackets show task-cluster confidence intervals. A memory-limited run has no measured success comparison.</p>
+        </table></details>
+        <p class="caption-detail" id="success-definition"></p>
         <p class="deployment-highlight" id="throughput"></p>
       </div>
     </section>
