@@ -34,7 +34,7 @@ text('te-saving', `${p.gpuSavingPercent}%`);
   `${Math.min(...episodeCounts)}–${Math.max(...episodeCounts)} episodes per deployment cell; intervals reflect the tested tasks and initial states.`,
   'Slow-device execution lengths were chosen from single-robot runs, not by the planner. Their single-robot baselines ran on a second machine.'
 ].forEach(value => {const li = document.createElement('li'); li.textContent = value; $('limitations-list').append(li);});
-text('bibtex-code', `@misc{tbd${p.year}matching,
+text('bibtex-code', `@misc{tbd${p.year}fit,
   title  = {${p.title}},
   author = {${p.bibAuthor}},
   year   = {${p.year}},
